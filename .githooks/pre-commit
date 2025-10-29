@@ -1,0 +1,17 @@
+#!/bin/sh
+
+BLOCKED_FILES="
+firmware/
+hardware-configuration.nix
+"
+
+echo "Running pre-commit hook..."
+
+for f in $BLOCKED_FILES; do
+  if git diff --cached --name-only -- "$f" | grep -q .; then
+    echo "Unstaging $f (local-only file)"
+    git restore --staged --worktree --quiet -- "$f"
+  fi
+done
+
+exit 0

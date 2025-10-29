@@ -1,0 +1,159 @@
+@define-color bg_color #101010;
+@define-color fg_color #D9C8A5;
+@define-color accent_color #D9C8A5;
+@define-color headerbar_color #151515;
+@define-color button_hover #2a2a2a;
+@define-color border_color #222222;
+
+window,
+dialog,
+.background {
+  background-color: @bg_color;
+  color: @fg_color;
+}
+
+headerbar,
+.titlebar {
+  background: linear-gradient(to bottom, @headerbar_color, shade(@headerbar_color, 0.9));
+  color: @fg_color;
+  border: none;
+  border-bottom: 1px solid @border_color;
+}
+
+headerbar:backdrop {
+  background: @headerbar_color;
+  color: shade(@fg_color, 0.7);
+}
+
+button,
+entry,
+spinbutton,
+combobox,
+notebook,
+scrollbar,
+scale {
+  background-color: shade(@bg_color, 1.05);
+  color: @fg_color;
+  border: 1px solid @border_color;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+button:hover,
+entry:focus {
+  background-color: @button_hover;
+  color: @accent_color;
+  border-color: @accent_color;
+}
+
+checkbutton,
+radiobutton {
+  color: @fg_color;
+}
+
+checkbutton:checked,
+radiobutton:checked {
+  color: @accent_color;
+}
+
+scrollbar slider {
+  background-color: @accent_color;
+  border-radius: 8px;
+}
+
+tooltip,
+.tooltip {
+  background-color: @headerbar_color;
+  color: @fg_color;
+  border: 1px solid @border_color;
+}
+
+selection,
+text selection,
+.selection,
+.iconview:selected,
+.view:selected,
+treeview:selected {
+  background-color: @accent_color;
+  color: @bg_color;
+}
+
+.view,
+.iconview,
+.content-view,
+textview.view,
+treeview.view {
+  background-color: @bg_color;
+  color: @fg_color;
+}
+
+.nautilus-window,
+.thunar,
+.caja,
+.nemo-window,
+.nautilus-desktop-window,
+.nautilus-list-view,
+.thunar-list-view {
+  background-color: @bg_color;
+  color: @fg_color;
+}
+
+.sidebar,
+.side-pane,
+.places-sidebar,
+.pane-separator {
+  background-color: shade(@bg_color, 0.95);
+  color: @fg_color;
+  border: none;
+}
+
+.nautilus-window headerbar,
+.thunar window headerbar,
+.thunar headerbar,
+.window headerbar {
+  background-color: @headerbar_color;
+  color: @fg_color;
+}
+
+.toolbar,
+.menubar,
+.toolbar button,
+.thunar .toolbar,
+.thunar .toolbar button,
+.thunar .toolbar .entry {
+  background-color: shade(@bg_color, 1.05);
+  color: @fg_color;
+  border: none;
+}
+
+menubar,
+.menubar {
+  background-color: @bg_color;
+}
+
+menu,
+.menu {
+  background-color: shade(@bg_color, 1.05);
+}
+
+menuitem,
+.menuitem {
+  background-color: transparent;
+}
+
+menuitem:hover,
+.menuitem:hover {
+  background-color: @accent_color;
+  color: @bg_color;
+}
+
+notebook header tab,
+.notebook header tab {
+  background-color: shade(@bg_color, 1.1);
+}
+
+notebook header tab:checked,
+.notebook header tab:checked {
+  background-color: @accent_color;
+  color: @bg_color;
+}

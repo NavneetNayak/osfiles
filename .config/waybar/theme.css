@@ -1,0 +1,131 @@
+* {
+    border: none;
+    font-family: "Iosevka"; 
+    font-size: 14px;
+    min-height: 0; 
+}
+
+window#waybar {
+    
+    background-color: #070707;
+    color: #d9c8a5;
+}
+
+#workspaces button {
+    color: #d9c8a5;
+    background: #070707;
+    box-shadow: none;
+    border-radius: 0;
+    transition: none;
+
+    
+}
+
+#workspaces button.active {
+    background-color: #d9c8a5;
+    color: #070707;
+}
+
+#clock,
+#battery,
+#backlight,
+#network,
+#pulseaudio,
+#tray {
+    
+    padding: 0 8px;
+} 
+
+#clock {
+    background-color: #070707;
+    color: #d9c8a5;
+}
+
+#battery {
+    background-color: #070707;
+    color: #d9c8a5;
+}
+
+#battery.charging {
+    color: #d9c8a5;
+    background-color: #070707;
+}
+
+@keyframes blink {
+    to {
+        background-color: #707070;
+        color: #070707;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+label:focus {
+    background-color: #070707;
+}
+
+#backlight {
+    background-color: #070707;
+    color:#d9c8a5;
+}
+
+#network {
+    background-color: #070707;
+    color:#d9c8a5;
+
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    background-color: #070707;
+    color: #d9c8a5;
+}
+
+#pulseaudio.muted {
+    background-color: #070707;
+    color: #d9c8a5;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #bbccdd;
+    color: #070707;
+    padding: 0 5px;
+    margin: 6px 3px;
+    min-width: 16px;
+}
