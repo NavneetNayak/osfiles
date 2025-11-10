@@ -1,7 +1,8 @@
 #!/bin/sh
 
 BLOCKED_FILES="
-firmware/
+**/firmware/all_firmware.tar.gz
+**/firmware/kernelcache.release.mac13g
 hardware-configuration.nix
 "
 

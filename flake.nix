@@ -1,7 +1,7 @@
 {
   description = "Navneet's NixOS config";
 
-  inputs = {
+  inputs = {    
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
     home-manager.url = "github:nix-community/home-manager";
 

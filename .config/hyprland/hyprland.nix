@@ -46,6 +46,7 @@
         blur = { enabled = false; };
 
         dim_special = 0.0;
+        dim_strength = 0.0;
       };
 
       animations = { enabled = false; };
@@ -60,7 +61,7 @@
       misc = {
         force_default_wallpaper = false;
         disable_hyprland_logo = true;
-        background_color = "rgba(10101001)";
+        background_color = "rgba(101010ff)";
       };
 
       input = {
@@ -89,6 +90,7 @@
       };
 
       windowrulev2 = [
+        "nodim, class:.*"
         "float, class:^(.*pavucontrol*.)$"
         "suppressevent maximize, class:.*"
         "float, class:^Pulsemixer$"

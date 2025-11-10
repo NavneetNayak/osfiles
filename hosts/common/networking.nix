@@ -9,6 +9,9 @@
       enable = true;
       settings.General.EnableNetworkConfiguration = true;
     };
+
+    nftables.enable = true;
+    firewall.enable = true;
   };
 
   services.openssh = {

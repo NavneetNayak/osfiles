@@ -28,6 +28,7 @@
     pulsemixer
     bluetuith
     fastfetch
+    dconf
 
     # general
     acpi
@@ -48,6 +49,7 @@
     ripgrep
     unzip
     tree 
+    devenv
   ];
 
   xdg = {

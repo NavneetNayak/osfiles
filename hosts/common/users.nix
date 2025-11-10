@@ -9,4 +9,6 @@
     isNormalUser = true;
     extraGroups = ["wheel" "docker" "networkmanager"];
   };
+
+  nix.settings.trusted-users = [ "root" "navneetnayak" ];
 }

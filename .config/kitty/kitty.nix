@@ -17,6 +17,8 @@ in
       window_padding_width = 2;
       confirm_os_window_close = 0;
       allow_remote_control = "yes";
+      dynamic_background_opacity = false;
+      background = "#101010";
     };
 
     keybindings = {

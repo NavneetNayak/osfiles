@@ -28,8 +28,8 @@
         setSocketVariable = true;
       };
     };
-  };
-
+  };  
+  
   services = {
     libinput.enable = true;
     printing.enable = true;
