@@ -1,4 +1,4 @@
-return   {
+return {
   "saghen/blink.cmp",
   version = "*",
   config = function()

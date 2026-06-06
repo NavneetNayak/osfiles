@@ -5,7 +5,7 @@ local function setup_keymaps(bufnr)
 
   -- Hover & Signature
   map("n", "K", function()
-    vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 })
+    vim.lsp.buf.hover({ border = "solid", max_height = 25, max_width = 120 })
   end, "Hover")
   map({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 
@@ -60,7 +60,7 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = true,
-  float = { border = "rounded", source = true, header = "", prefix = "" },
+  float = { border = "solid", source = true, header = "", prefix = "" },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "󰅚 ",
