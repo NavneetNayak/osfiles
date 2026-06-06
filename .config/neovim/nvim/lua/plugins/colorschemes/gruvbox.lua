@@ -19,8 +19,13 @@ return {
 		vim.g.gruvbox_color_column = "bg0"
 		vim.g.gruvbox_sign_column = "bg0"
 
-		vim.cmd.colorscheme("gruvbox")
-
-    vim.api.nvim_set_hl(0, "Visual", { reverse = true })
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      pattern = "gruvbox",
+      callback = function()
+        vim.api.nvim_set_hl(0, "Normal", { bg = black })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = black })
+        vim.api.nvim_set_hl(0, "Visual", { reverse = true })
+      end,
+    })
 	end,
 }

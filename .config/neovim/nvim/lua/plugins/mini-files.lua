@@ -31,4 +31,3 @@ return {
     end, { desc = "Open Mini Files" })
   end,
 }
-
