@@ -22,12 +22,11 @@
 
       "$terminal" = "kitty";
       "$fileManager" = "thunar";
-      "$browser" = "zen-beta";
-      "$music" = "youtube-music";
+      "$browser" = "brave";
 
       general = {
         gaps_in = 1;
-        gaps_out = 1;
+        gaps_out = 0;
         border_size = 1;
         "col.active_border" = "rgba(EBDBB388)";
         "col.inactive_border" = "rgba(EBDBB366)";
@@ -37,8 +36,7 @@
       };
 
       decoration = {
-        rounding = 0;
-        rounding_power = 0;
+        rounding = 1;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
@@ -52,7 +50,6 @@
       animations = { enabled = false; };
 
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
       };
 
@@ -97,6 +94,10 @@
         "size 665 250, class:^Pulsemixer$"
         "move 925 715, class:^Pulsemixer$"
         "nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
+
+        "float, class:^icat-float$"
+        "center, class:^icat-float$"
+        "size 1000 700, class:^icat-float$"
       ];
 
       "$mainMod" = "SUPER";

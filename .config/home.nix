@@ -13,8 +13,9 @@
   home.homeDirectory = "/home/navneetnayak";
 
   home.packages = with pkgs; [
-    inputs.zen-browser.packages."${system}".default 
-
+    helium
+    chromium
+    
     # system
     playerctl
     grim
@@ -35,8 +36,12 @@
     obsidian
     telegram-desktop
     mpv
-    zathura #TBC
-    youtube-music #TBC
+    sioyek
+    ncdu
+    vesktop
+    unstable.melonds
+    unstable.mgba
+    youtube-music
 
     # programming language stuff
     python3
@@ -50,6 +55,12 @@
     unzip
     tree 
     devenv
+    lazygit
+
+    (pkgs.writeShellScriptBin "icat-open" ''
+      kitty --class icat-float \
+        -e sh -c 'kitten icat "$1"; read' sh "$1"
+    '')
   ];
 
   xdg = {
@@ -61,6 +72,24 @@
       defaultApplications = {
         "inode/directory" = "xfce.thunar";
       };
+    };
+
+    desktopEntries.icat = {
+      name = "Kitty Icat";
+      exec = "icat-open %f";
+      mimeType = [
+        "image/png"
+        "image/jpeg"
+        "image/webp"
+        "image/gif"
+        "image/bmp"
+      ];
+    };
+
+    mimeApps.defaultApplications = {
+      "image/png" = "icat.desktop";
+      "image/jpeg" = "icat.desktop";
+      "image/webp" = "icat.desktop";
     };
   };
 

@@ -23,6 +23,13 @@
       gp = "git pull";
       gd = "git diff";
       gb = "git branch";
+
+      # nmcli / tui
+      nwr = "nmcli dev wifi rescan";
+      nwc = "nmcli dev wifi connect";
+
+      # nix
+      nsp = "nix-shell -p";
     };
 
     initContent = ''

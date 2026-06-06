@@ -10,11 +10,16 @@
       settings.General.EnableNetworkConfiguration = true;
     };
 
-    nftables.enable = true;
-    firewall.enable = true;
+    nftables.enable = false;
+    firewall = {
+      enable = true;
+      package = pkgs.iptables;
+    };
   };
 
   services.openssh = {
     enable = true;
   };
+
+  # services.tailscale.enable = true;
 }

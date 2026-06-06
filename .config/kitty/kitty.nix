@@ -32,7 +32,7 @@ in
 
     font = {
       name = "Iosevka";
-      size = 13.0;
+      size = 12.0;
     };
 
     extraConfig = theme;
