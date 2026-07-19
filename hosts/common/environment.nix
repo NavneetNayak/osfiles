@@ -40,19 +40,6 @@
 
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
-
-    prometheus = {
-      enable = true;
-      globalConfig.scrape_interval = "10s";
-      scrapeConfigs = [
-        {
-          job_name = "hunt";
-          static_configs = [{
-            targets = [ "localhost:8080" ];
-          }];
-        }
-      ];
-    };
   };
 
   nix.package = pkgs.nixVersions.latest;

@@ -6,11 +6,12 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     neovim.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixos-apple-silicon, home-manager, neovim, ... }@inputs: 
+  outputs = { self, nixos-apple-silicon, home-manager, zen-browser, neovim, ... }@inputs: 
   let
     system = "aarch64-linux";
   

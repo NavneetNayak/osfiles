@@ -7,6 +7,7 @@
     ./direnv.nix
     ./hyprland/hyprland.nix
     ./neovim/neovim.nix
+    ./emacs/emacs.nix
   ];
 
   home.username = "navneetnayak";
@@ -15,6 +16,7 @@
   home.packages = with pkgs; [
     helium
     chromium
+    inputs.zen-browser.packages."${system}".default
     
     # system
     playerctl
