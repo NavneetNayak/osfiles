@@ -5,15 +5,19 @@ local function setup_keymaps(bufnr)
 
   -- Hover & Signature
   map("n", "K", function()
-    vim.lsp.buf.hover({ border = "solid", max_height = 25, max_width = 120 })
+    vim.lsp.buf.hover({ border = "single", max_height = 25, max_width = 120 })
   end, "Hover")
   map({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 
   -- gd, gD, gr, gi, gy handled by Snacks picker (snacks.lua)
 
   -- Diagnostics navigation
-  map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Prev Diagnostic")
-  map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "Next Diagnostic")
+  map("n", "[d", function()
+    vim.diagnostic.jump({ count = -1 })
+  end, "Prev Diagnostic")
+  map("n", "]d", function()
+    vim.diagnostic.jump({ count = 1 })
+  end, "Next Diagnostic")
 
   -- <leader>c = Code
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
@@ -34,7 +38,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if not client then return end
+    if not client then
+      return
+    end
 
     setup_keymaps(bufnr)
 
@@ -60,7 +66,7 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = true,
-  float = { border = "solid", source = true, header = "", prefix = "" },
+  float = { border = "single", source = true, header = "", prefix = "" },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "󰅚 ",
@@ -80,6 +86,8 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.enable({
+  "zls",
   "pyright",
   "gopls",
+  "clang",
 })

@@ -15,7 +15,6 @@
 
       # nixos
       nix-clean = "nix-collect-garbage -d && nix-store --optimize && nix-store --gc";
-      nix-rebuild = "sudo nixos-rebuild switch";
       
       # git
       gs = "git status";

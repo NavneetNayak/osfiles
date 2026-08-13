@@ -8,6 +8,8 @@
 
       NIXOS_OZONE_WL = "1";
     };
+
+    pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
   };
 
   time.timeZone = "Asia/Kolkata";
@@ -16,7 +18,6 @@
   fonts = {
     packages = with pkgs; [
       iosevka
-      newcomputermodern
     ];
   };
 
@@ -25,7 +26,7 @@
     spiceUSBRedirection.enable = true;
 
     docker = {
-      enable = true;
+      enable = false;
 
       rootless = {
         enable = true;
@@ -43,8 +44,4 @@
   };
 
   nix.package = pkgs.nixVersions.latest;
-
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-  };
 }

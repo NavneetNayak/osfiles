@@ -1,20 +1,24 @@
 { pkgs, lib, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.unstable.hyprland;
+    configType = "hyprlang";
 
     settings = {
       monitor = [
         ",preferred,auto,1.6"
-        ",addreserved,1,0,0,0"
       ];
 
       env = [
-        "GTK_THEME, Gruvbox-Dark"
-        "GTK_THEME, Gruvbox-Dark"
+        "GTK_THEME, gruvbox-dark"
         "XCURSOR_THEME, Adwaita"
         "XCURSOR_SIZE, 20"
         "QT_QPA_PLATFORMTHEME, adwaita"
       ];
+
+      cursor = {
+        no_hardware_cursors = true;
+      };
 
       exec-once = [
         "hyprctl setcursor macOS 20"
@@ -36,7 +40,7 @@
       };
 
       decoration = {
-        rounding = 1;
+        rounding = 0;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
@@ -58,6 +62,7 @@
       misc = {
         force_default_wallpaper = false;
         disable_hyprland_logo = true;
+        disable_splash_rendering = true;
         background_color = "rgba(101010ff)";
       };
 
@@ -86,18 +91,27 @@
         sensitivity = -0.5;
       };
 
-      windowrulev2 = [
-        "nodim, class:.*"
-        "float, class:^(.*pavucontrol*.)$"
-        "suppressevent maximize, class:.*"
-        "float, class:^Pulsemixer$"
-        "size 665 250, class:^Pulsemixer$"
-        "move 925 715, class:^Pulsemixer$"
-        "nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
+      workspace = [
+          "w[tv1], gapsout:0, gapsin:0"
+          "f[1], gapsout:0, gapsin:0"
+      ];
 
-        "float, class:^icat-float$"
-        "center, class:^icat-float$"
-        "size 1000 700, class:^icat-float$"
+      windowrule = [
+          "border_size 0, match:float false, match:workspace w[tv1]"
+          "rounding 0, match:float false, match:workspace w[tv1]"
+          "border_size 0, match:float false, match:workspace f[1]"
+          "rounding 0, match:float false, match:workspace f[1]"
+
+          "no_dim on, match:class .*"
+          "float on, match:class ^(.*pavucontrol*.)$"
+          "suppress_event maximize, match:class .*"
+          "float on, match:class ^Pulsemixer$"
+          "size 665 250, match:class ^Pulsemixer$"
+          "move 925 715, match:class ^Pulsemixer$"
+          "no_focus on, match:class ^$, match:title ^$, match:xwayland on, match:float true, match:fullscreen off, match:pin off"
+          "float on, match:class ^icat-float$"
+          "center on, match:class ^icat-float$"
+          "size 1000 700, match:class ^icat-float$"
       ];
 
       "$mainMod" = "SUPER";
@@ -113,11 +127,9 @@
         "$mainMod, V, centerWindow"
         "$mainMod, Space, exec, fuzzel"
         "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
         "$mainMod, F, fullscreen"
         "$mainMod, C, exec, ${pkgs.writeShellScriptBin "screenshot" (builtins.readFile ./screenshot.sh)}/bin/screenshot"
         "$mainMod SHIFT, C, exec, hyprpicker | tee >(wl-copy) | xargs dunstify 'Copied to clipboard!' -t 1000"
-        "$mainMod, X, swapsplit"
         "$mainMod, Z, togglefloating"
         "$mainMod ,L, exec, togglegroup"
         "$mainMod, left, movefocus, l"

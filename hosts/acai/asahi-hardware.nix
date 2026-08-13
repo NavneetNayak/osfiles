@@ -3,7 +3,7 @@
     asahi = {
       enable = true;
       setupAsahiSound = true;
-      peripheralFirmwareDirectory = ./firmware;
+      peripheralFirmwareDirectory = /boot/vendorfw;
     };
 
     graphics.enable = true;

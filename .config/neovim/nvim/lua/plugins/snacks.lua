@@ -110,9 +110,6 @@ return {
     { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
 
     { "<leader>wd", "<C-w>c", desc = "Close Window" },
-    { "<leader>ws", "<C-w>s", desc = "Split Horizontal" },
-    { "<leader>wv", "<C-w>v", desc = "Split Vertical" },
-    { "<leader>ww", "<C-w>w", desc = "Other Window" },
     { "<leader>w=", "<C-w>=", desc = "Equal Size" },
     { "<leader>wm", function() Snacks.zen.zoom() end, desc = "Maximize" },
 

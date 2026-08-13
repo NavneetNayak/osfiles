@@ -7,15 +7,16 @@
     ./direnv.nix
     ./hyprland/hyprland.nix
     ./neovim/neovim.nix
-    ./emacs/emacs.nix
+    # ./emacs/emacs.nix
+    ./waybar/waybar.nix
   ];
 
   home.username = "navneetnayak";
   home.homeDirectory = "/home/navneetnayak";
 
   home.packages = with pkgs; [
-    helium
-    chromium
+    #helium
+    #chromium
     inputs.zen-browser.packages."${system}".default
     
     # system
@@ -24,7 +25,7 @@
     slurp
     wl-clipboard
     btop
-    xfce.thunar
+    thunar
     hyprpicker
     waybar
     brightnessctl
@@ -38,12 +39,13 @@
     obsidian
     telegram-desktop
     mpv
-    sioyek
+    #sioyek
     ncdu
     vesktop
-    unstable.melonds
-    unstable.mgba
-    youtube-music
+    pear-desktop
+    # inputs.bookokrat.packages."${system}".default
+    ffmpeg
+    ghostscript
 
     # programming language stuff
     python3
@@ -72,7 +74,7 @@
       enable = true;
 
       defaultApplications = {
-        "inode/directory" = "xfce.thunar";
+        "inode/directory" = "thunar";
       };
     };
 

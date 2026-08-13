@@ -7,9 +7,10 @@
     };
 
     tmp = {
-      cleanOnBoot = true;
       useTmpfs = true;
     };
+
+    binfmt.emulatedSystems = [ "x86_64-linux" "i686-linux" ];
 
     kernelParams = [
       "zswap.enabled=1"

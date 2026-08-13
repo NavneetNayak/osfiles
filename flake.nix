@@ -1,47 +1,54 @@
 {
   description = "Navneet's NixOS config";
 
-  inputs = {    
-    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixos-apple-silicon = {
+      url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    neovim.url = "github:nix-community/neovim-nightly-overlay";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixos-apple-silicon, home-manager, zen-browser, neovim, ... }@inputs: 
+  outputs = { self, nixpkgs, nixos-apple-silicon, home-manager, zen-browser, neovim, ... }@inputs:
   let
     system = "aarch64-linux";
-  
-    nixpkgs = nixos-apple-silicon.inputs.nixpkgs;
-
-    heliumOverlay = final: prev: {
-      helium = prev.callPackage ./.config/helium.nix { };
-    };
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [ 
-        nixos-apple-silicon.overlays.default 
-        heliumOverlay
-
-        (final: prev: {
-          unstable = import inputs.nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        })
-      ];
-    };
   in
   {
     nixosConfigurations = {
       acai = nixpkgs.lib.nixosSystem {
-        inherit system pkgs; 
+        inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [
+              nixos-apple-silicon.overlays.default
+
+              (final: prev: {
+                unstable = import inputs.nixpkgs-unstable {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+
           nixos-apple-silicon.nixosModules.default
           ./hosts/common/bluetooth.nix
           ./hosts/common/configuration.nix
@@ -57,12 +64,12 @@
 
             home-manager.extraSpecialArgs = { inherit inputs system; };
           }
-          
+
           ./hosts/acai/asahi-hardware.nix
           ./hosts/acai/boot.nix
           ./hosts/acai/touchbar.nix
-
-          ./hardware-configuration.nix
+          ./hosts/acai/environment.nix
+          ./hosts/acai/hardware-configuration.nix
         ];
       };
     };

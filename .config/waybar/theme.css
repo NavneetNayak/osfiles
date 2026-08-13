@@ -6,24 +6,21 @@
 }
 
 window#waybar {
-    
-    background-color: #070707;
+    background-color: #101010;
     color: #d9c8a5;
 }
 
 #workspaces button {
     color: #d9c8a5;
-    background: #070707;
+    background: #101010;
     box-shadow: none;
     border-radius: 0;
     transition: none;
-
-    
 }
 
 #workspaces button.active {
     background-color: #d9c8a5;
-    color: #070707;
+    color: #101010;
 }
 
 #clock,
@@ -32,29 +29,28 @@ window#waybar {
 #network,
 #pulseaudio,
 #tray {
-    
     padding: 0 8px;
 } 
 
 #clock {
-    background-color: #070707;
+    background-color: #101010;
     color: #d9c8a5;
 }
 
 #battery {
-    background-color: #070707;
+    background-color: #101010;
     color: #d9c8a5;
 }
 
 #battery.charging {
     color: #d9c8a5;
-    background-color: #070707;
+    background-color: #101010;
 }
 
 @keyframes blink {
     to {
         background-color: #707070;
-        color: #070707;
+        color: #101010;
     }
 }
 
@@ -64,16 +60,16 @@ window#waybar {
 }
 
 label:focus {
-    background-color: #070707;
+    background-color: #101010;
 }
 
 #backlight {
-    background-color: #070707;
+    background-color: #101010;
     color:#d9c8a5;
 }
 
 #network {
-    background-color: #070707;
+    background-color: #101010;
     color:#d9c8a5;
 
 }
@@ -83,12 +79,12 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #070707;
+    background-color: #101010;
     color: #d9c8a5;
 }
 
 #pulseaudio.muted {
-    background-color: #070707;
+    background-color: #101010;
     color: #d9c8a5;
 }
 
@@ -124,7 +120,7 @@ label:focus {
 
 #language {
     background: #bbccdd;
-    color: #070707;
+    color: #101010;
     padding: 0 5px;
     margin: 6px 3px;
     min-width: 16px;

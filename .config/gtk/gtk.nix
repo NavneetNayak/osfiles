@@ -6,38 +6,43 @@ in
 {
   gtk = {
     enable = true;
-    
+
     theme = {
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
+      name = "gruvbox-dark";
+      package = pkgs.gruvbox-dark-gtk;
     };
-    
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    
+
     cursorTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
       size = 20;
     };
-    
+
     font = {
       name = "Iosevka";
-      size = 11;
+      size = 12;
     };
-    
+
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
       gtk-cursor-theme-size = 20;
     };
-    
+
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
       gtk-cursor-theme-size = 20;
     };
-    
+
+    gtk4.theme = {
+      name = "gruvbox-dark";
+      package = pkgs.gruvbox-dark-gtk;
+    };
+
     gtk3.extraCss = theme;
     gtk4.extraCss = theme;
   };
@@ -47,17 +52,17 @@ in
     settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
-        gtk-theme = "Gruvbox-Dark";
+        gtk-theme = "gruvbox-dark";
         icon-theme = "Papirus-Dark";
         cursor-theme = "Adwaita";
         cursor-size = 20;
-        font-name = "Iosevka 11";
+        font-name = "Iosevka 12";
       };
     };
   };
 
   home.sessionVariables = {
-    GTK_THEME = "Gruvbox-Dark";
+    GTK_THEME = "gruvbox-dark";
     XCURSOR_THEME = "Adwaita";
     XCURSOR_SIZE = "20";
   };

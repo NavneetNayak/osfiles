@@ -6,8 +6,7 @@
   programs.dconf.enable = true;
   programs.virt-manager.enable = true;
 
-  environment.systemPackages = with pkgs; [
-  ];
+  # environment.systemPackages = with pkgs; [ ];
 
   users.users."navneetnayak" = {
     initialPassword = "navneetnayak";

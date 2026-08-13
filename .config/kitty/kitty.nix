@@ -32,9 +32,9 @@ in
 
     font = {
       name = "Iosevka";
-      size = 12.0;
+      size = 14.0;
     };
 
-    extraConfig = theme;
+    extraConfig = lib.mkOrder 500 theme;
   };
 }

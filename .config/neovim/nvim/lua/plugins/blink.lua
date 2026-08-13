@@ -29,7 +29,7 @@ return {
       },
       completion = {
         menu = {
-          border = "solid",
+          border = "single",
           scrolloff = 1,
           scrollbar = false,
           draw = {
@@ -45,7 +45,7 @@ return {
         },
         documentation = {
           window = {
-            border = "solid",
+            border = "single",
             scrollbar = false,
             winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
           },
