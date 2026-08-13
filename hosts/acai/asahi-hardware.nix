@@ -1,9 +1,11 @@
-{config, lib, pkgs, ... }: {
+{config, ... }: {
   hardware = {
+    apple.touchBar.enable = true;
+
     asahi = {
       enable = true;
       setupAsahiSound = true;
-      peripheralFirmwareDirectory = /boot/vendorfw;
+      peripheralFirmwareDirectory = /boot/vendorfw; # impure
     };
 
     graphics.enable = true;

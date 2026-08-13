@@ -1,7 +1,6 @@
 { pkgs, lib, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.unstable.hyprland;
     configType = "hyprlang";
 
     settings = {

@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
@@ -19,6 +18,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     neovim = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,27 +26,16 @@
   };
 
   outputs = { self, nixpkgs, nixos-apple-silicon, home-manager, zen-browser, neovim, ... }@inputs:
-  let
-    system = "aarch64-linux";
-  in
   {
     nixosConfigurations = {
       acai = nixpkgs.lib.nixosSystem {
-        inherit system;
         specialArgs = { inherit inputs; };
         modules = [
           {
-            nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
               nixos-apple-silicon.overlays.default
-
-              (final: prev: {
-                unstable = import inputs.nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-              })
             ];
+            nixpkgs.config.allowUnfree = true;
           }
 
           nixos-apple-silicon.nixosModules.default
@@ -62,12 +51,14 @@
             home-manager.useUserPackages = true;
             home-manager.users.navneetnayak = import ./.config/home.nix;
 
-            home-manager.extraSpecialArgs = { inherit inputs system; };
+            home-manager.extraSpecialArgs = { 
+              inherit inputs;
+              system = "aarch64-linux";
+            };
           }
 
           ./hosts/acai/asahi-hardware.nix
           ./hosts/acai/boot.nix
-          ./hosts/acai/touchbar.nix
           ./hosts/acai/environment.nix
           ./hosts/acai/hardware-configuration.nix
         ];

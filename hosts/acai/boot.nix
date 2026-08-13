@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: {
+{config, ...}: {
   boot = {
     m1n1CustomLogo = ./assets/bootlogo.png;
     loader = {
@@ -9,8 +9,6 @@
     tmp = {
       useTmpfs = true;
     };
-
-    binfmt.emulatedSystems = [ "x86_64-linux" "i686-linux" ];
 
     kernelParams = [
       "zswap.enabled=1"

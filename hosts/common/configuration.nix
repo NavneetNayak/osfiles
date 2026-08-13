@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }: {
+{ config, ... }: {
   system.stateVersion = "25.05";
-
-  systemd.services.nix-daemon.environment.TMPDIR = "/var/tmp";
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, ... }: {
   environment = {
     sessionVariables = {
       GSK_RENDERER = "ngl";
@@ -43,5 +43,8 @@
     spice-vdagentd.enable = true;
   };
 
+  systemd.services.nix-daemon.environment.TMPDIR = "/var/tmp";
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.package = pkgs.nixVersions.latest;
 }
